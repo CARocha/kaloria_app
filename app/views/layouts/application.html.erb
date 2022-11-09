@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KaloriaApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container is-fullheight">
+      <%= render 'layouts/navbar' %>
+      <% if notice %>
+        <div class="notification is-success">
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="notification is-danger">
+          <%= alert %>
+        </div>
+      <% end %>
+        <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
+</html>
