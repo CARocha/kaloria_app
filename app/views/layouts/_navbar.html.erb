@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-light is-spaced has-shadow" role="navigation" aria-label="main navigation">
   <div class="navbar-brand is-shadow">
     <a class="navbar-item" href="/">
         <%= link_to image_tag("calorias.png", alt: "kalorias", class: "thumbnail"), "/" %>
@@ -54,3 +54,6 @@
 
   </div>
 </nav>
+<% if !current_page?(root_path) %>
+<br/><br/>
+<% end %>
