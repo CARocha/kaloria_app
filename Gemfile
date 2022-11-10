@@ -32,6 +32,7 @@ gem "bulma-rails", "~> 0.9.4"
 gem 'devise'
 gem "font-awesome-sass", "~> 6.2.0"
 gem 'kaminari', '~> 1.2.1'
+gem "chartkick"
 
 
 group :development, :test do
