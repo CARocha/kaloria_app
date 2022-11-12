@@ -20,6 +20,20 @@
       <a class="navbar-item">
         Documentation
       </a>
+      <% if user_signed_in? %>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More actions
+        </a>
+        <div class="navbar-dropdown">
+          <%= link_to 'View all calories', calories_path, :class => 'navbar-item' %>
+          <%= link_to 'Add calories', new_calory_path, :class => 'navbar-item' %>
+          <a class="navbar-item">
+            Contact
+          </a>
+        </div>
+      </div>
+      <% end %>
 
     </div>
 
