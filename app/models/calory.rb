@@ -1,7 +1,7 @@
 class Calory < ApplicationRecord
   belongs_to :user
   default_scope -> { order(date: :desc) }
-  paginates_per 2
+  paginates_per 10
   validates :user_id, presence: true
   validates :comment, presence: true
   validates :calories_ingested, presence: true, numericality: true
