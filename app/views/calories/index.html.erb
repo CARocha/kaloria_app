@@ -1,0 +1,33 @@
+<div class="has-text-centered">
+<h1>Calories # of records <%= current_user.calories.count %> </h1>
+
+<table class="table is-striped is-hoverable mx-auto">
+  <thead>
+    <tr>
+      <th>Calories ingested</th>
+      <th>Calories burned</th>
+      <th>Comment</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calories.each do |calory| %>
+      <tr>
+        <td><%= calory.calories_ingested %></td>
+        <td><%= calory.calories_burned %></td>
+        <td><%= calory.comment.truncate(25) %></td>
+        <td><%= calory.date %></td>
+        <td><%= link_to 'Show', calory %></td>
+        <td><%= link_to 'Edit', edit_calory_path(calory) %></td>
+        <td><%= link_to 'Destroy', calory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @calories %>
+<br>
+
+<%= link_to 'New Calory', new_calory_path, :class => 'button is-primary' %>
+</div>

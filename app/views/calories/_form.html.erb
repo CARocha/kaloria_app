@@ -1,0 +1,42 @@
+<%= form_with(model: calory) do |form| %>
+  <% if calory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calory.errors.count, "error") %> prohibited this calory from being saved:</h2>
+
+      <ul>
+        <% calory.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :calories_ingested %>
+    <%= form.text_field :calories_ingested, :class => "input is-info is-rounded" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calories_burned %>
+    <%= form.text_field :calories_burned, :class => "input is-info is-rounded" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment, :class => "textarea is-info is-rounded" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_field :date, as: :date_time_picker, :class => "input is-info is-rounded" %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Calory', :class => 'button is-primary' %>
+  </div>
+
+<% end %>

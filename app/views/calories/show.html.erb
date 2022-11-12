@@ -1,0 +1,34 @@
+<div class="columns content has-text-centered">
+<div class="column"></div>
+<div class="column is-one-third">
+
+<p>
+  <strong>Calories ingested:</strong>
+  <%= @calory.calories_ingested %>
+</p>
+
+<p>
+  <strong>Calories burned:</strong>
+  <%= @calory.calories_burned %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @calory.comment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @calory.date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @calory.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_calory_path(@calory) %> |
+<%= link_to 'Back', calories_path %>
+</div>
+<div class="column"></div>
+</div>

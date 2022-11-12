@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calories_ingested: 1.5
+  calories_burned: 1.5
+  comment: MyText
+  date: 2022-11-10 11:13:05
+  user: one
+
+two:
+  calories_ingested: 1.5
+  calories_burned: 1.5
+  comment: MyText
+  date: 2022-11-10 11:13:05
+  user: two
