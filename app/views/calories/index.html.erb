@@ -1,5 +1,17 @@
 <div class="has-text-centered">
-<h1>Calories # of records <%= current_user.calories.count %> </h1>
+<%= form_tag "/calories", method: "GET" do %>
+  <%= label_tag :comment %>
+  <%= text_field_tag :comment, params[:comment], :class => "input is-rounded mb-4" %>
+
+  <%= label_tag :date_start %>
+  <%= date_field_tag :date_start, params[:date_start], :class => "input is-rounded mb-4" %>
+
+  <%= label_tag :date_end %>
+  <%= date_field_tag :date_end, params[:date_end], :class => "input is-rounded mb-4" %>
+
+  <%= submit_tag "Search", :class => "button is-info" %>
+<% end %>
+<h1>Calories # of records <%= @calories.count %> </h1>
 
 <table class="table is-striped is-hoverable mx-auto">
   <thead>
@@ -17,8 +29,8 @@
       <tr>
         <td><%= calory.calories_ingested %></td>
         <td><%= calory.calories_burned %></td>
-        <td><%= calory.comment.truncate(25) %></td>
-        <td><%= calory.date %></td>
+        <td><%= calory.comment %></td>
+        <td><%= time_ago_in_words(calory.date) %></td>
         <td><%= link_to 'Show', calory %></td>
         <td><%= link_to 'Edit', edit_calory_path(calory) %></td>
         <td><%= link_to 'Destroy', calory, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -4,7 +4,19 @@ class CaloriesController < ApplicationController
   # GET /calories or /calories.json
   def index
     if user_signed_in?
-      @calories = Calory.where(user_id: current_user.id).page params[:page]
+      if !params[:comment].blank? || (!params[:date_start].blank? && !params[:date_end].blank?)
+        puts 'entroooo'
+        @calories = Calory.where(user_id: current_user.id)
+        if !params[:comment].blank?
+          @calories = @calories.where("comment like ?","%#{params[:comment]}%")
+        end
+        if !params[:date_start].blank? && !params[:date_end].blank?
+          @calories = @calories.created_between(params[:date_start], params[:date_end])
+        end
+        @calories = @calories.page params[:page]
+      else
+        @calories = Calory.where(user_id: current_user.id).page params[:page]
+      end
     else
       redirect_to user_session_path
     end
