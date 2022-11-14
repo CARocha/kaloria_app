@@ -1,5 +1,5 @@
 
 <%= line_chart [
-  {name: "calories_ingested", data: Calory.group_by_day(:date,range: 4.weeks.ago.midnight..Time.now).where(user_id: current_user.id).sum(:calories_ingested)},
-  {name: "calories_burned", data: Calory.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: current_user.id).sum(:calories_burned)}
+  {name: "calories_ingested", data: Calory.group("user_id").group_by_day(:date,range: 4.weeks.ago.midnight..Time.now).where(user_id: current_user.id).sum(:calories_ingested)},
+  {name: "calories_burned", data: Calory.group("user_id").group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: current_user.id).sum(:calories_burned)}
 ] %>
