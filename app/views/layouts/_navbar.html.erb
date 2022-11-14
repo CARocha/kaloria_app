@@ -16,10 +16,7 @@
       <a href="/" class="navbar-item">
         Home
       </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
+      <%= link_to 'Documentation', documentation_path, :class => 'navbar-item' %>
       <% if user_signed_in? %>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -45,9 +42,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Dashboard
-          </a>
+          <%= link_to 'Dashboard', dashboard_path, :class => 'navbar-item' %>
           <a class="navbar-item">
             Shared
           </a>
