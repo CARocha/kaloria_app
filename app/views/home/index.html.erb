@@ -1,10 +1,35 @@
 <section class="hero is-large is-info">
     <div class="hero-body">
     <p class="title content has-text-centered">
-        Welcome to Kalorias
+        Welcome <% if user_signed_in? %> 
+        <% if current_user.first_name && current_user.last_name %>
+            <%= current_user.first_name %> <%= current_user.last_name %>
+        <% else %>
+            <%= current_user.email %>
+        <% end %>
+        <% end %>
+        to Kalorias
     </p>
     <p class="subtitle content has-text-centered">
-        This website is for control your intake <strong>Calorias</strong>!
+        This website is for control your intake <strong>Calories</strong>!
+    </p>
+    <p>
+    <% if user_signed_in? %>
+        <div class="buttons is-centered">
+            <%= link_to calories_path, class: "button is-warning" do %>
+            <span class="icon">
+            <i class="fab fa-hotjar"></i>
+            </span>
+            <span>View all calories</span>
+            <% end %>
+            <%= link_to new_calory_path, class: "button is-success" do %>
+                <span class="icon">
+                <i class="fab fa-gulp"></i>
+                </span>
+                <span>Add new calories</span>
+            <% end %>
+        </div>
+    <% end %>
     </p>
     </div>
 </section>
