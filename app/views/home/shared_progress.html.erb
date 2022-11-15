@@ -1,0 +1,15 @@
+<div class="columns content has-text-centered">
+<div class="column"></div>
+<div class="column is-one-third">
+<h2>Compartir mi progreso con alguien más</h2>
+<%= form_tag '/sharedp', :method => "get" do%>
+
+Email : </br><%= text_field_tag 'email', '',
+:class=> 'input is-info is-rounded mb-4',
+:placeholder => "Email" %></br>
+<%= submit_tag "submit",:value => "submit", :class => 'button is-primary' %>
+<%end%>
+
+</div>
+<div class="column"></div>
+</div>
