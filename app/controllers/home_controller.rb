@@ -11,15 +11,19 @@ class HomeController < ApplicationController
       ]
     elsif !auth.blank?
       @user = User.find_by(id:auth)
-      @data = [
-        {name: "calories_ingested", data: Calory.unscoped.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: @user.id).sum(:calories_ingested)},
-        {name: "calories_burned", data: Calory.unscoped.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: @user.id).sum(:calories_burned)}
-      ]
+      if @user == nil
+        redirect_to root_path
+      else
+        @data = [
+          {name: "calories_ingested", data: Calory.unscoped.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: @user.id).sum(:calories_ingested)},
+          {name: "calories_burned", data: Calory.unscoped.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: @user.id).sum(:calories_burned)}
+        ]
+      end
+
     else
       redirect_to user_session_path
     end
-    
-    
+
   end
   def documentation
   end
