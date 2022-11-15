@@ -42,6 +42,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :height %><br />
+    <%= f.number_field :height, :step => 0.01, :class => 'input is-info is-rounded' %>
+  </div>
+
+  <div class="field">
     <%= f.label :weight %><br />
     <%= f.number_field :weight, :step => 0.01, :class => 'input is-info is-rounded' %>
   </div>
