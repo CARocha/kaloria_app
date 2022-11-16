@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :calories, dependent: :destroy
 
+  has_secure_token :auth_token, length: 36
+
   def age
     now = Time.now.utc.to_date
     now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)

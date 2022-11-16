@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  include ApplicationHelper
   def index
   end
   def dashboard
@@ -10,7 +11,8 @@ class HomeController < ApplicationController
         {name: "calories_burned", data: Calory.unscoped.group_by_day(:date, range: 4.weeks.ago.midnight..Time.now).where(user_id: current_user.id).sum(:calories_burned)}
       ]
     elsif !auth.blank?
-      @user = User.find_by(id:auth)
+      auth1 = cipher_cesar(auth, 5, -1)
+      @user = User.find_by(email:auth1)
       if @user == nil
         redirect_to root_path
       else
@@ -32,8 +34,8 @@ class HomeController < ApplicationController
     @user = current_user
     if !email.blank?
       flash[:notice] =  "Email was successfully sent."
-      SharedProgressMailer.with(email: email, user: @user).shared_email.deliver_now
+      token = cipher_cesar(@user.email, 5 )
+      SharedProgressMailer.with(email: email, user: @user, token: token).shared_email.deliver_now
     end
-    
   end
 end
