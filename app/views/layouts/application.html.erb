@@ -25,6 +25,15 @@
           <%= alert %>
         </div>
       <% end %>
+        <% if user_signed_in? %>
+          <% if current_user.first_name.blank? || current_user.last_name.blank? || current_user.weight.blank? || current_user.height.blank? || current_user.birthday.blank? %>
+            <div class="notification is-warning">
+            <button class="delete"></button>
+            Edita tu perfil para calcular tu IMC
+            y puedas compartir a tus amigos <%= link_to 'Edit profile', edit_user_registration_path %> 
+            </div>
+          <% end %>
+        <% end %>
         <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
