@@ -1,0 +1,56 @@
+<div class="columns content has-text-centered">
+<div class="column"></div>
+<div class="column is-one-third">
+  <h2>Sign up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",  
+          :class => "input is-info is-rounded",
+          :placeholder => "Email"
+        %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <%= f.password_field :password, autocomplete: "new-password",
+          :class => "input is-info is-rounded",
+          :placeholder => 'Password'
+        %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",
+          :class => "input is-info is-rounded",
+          :placeholder => 'Password confirmation'
+        %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", :class => 'button is-primary' %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+<div class="column"></div>
+</div>
